@@ -1,5 +1,5 @@
 import {IAlternativeNode} from "./types/IAlternativeNode";
-import {ICombinerNode} from "./types/ICombinerNode";
+import {ITransformerNode} from "./types/ITransformerNode";
 import {IInterfaceNode} from "./types/IInterfaceNode";
 import {ISiblingNode} from "./types/ISiblingNode";
 
@@ -9,6 +9,6 @@ import {ISiblingNode} from "./types/ISiblingNode";
  */
 export type ITargetNode<T> =
     | IInterfaceNode<T, any>
-    | ICombinerNode<T, any>
+    | ITransformerNode<T, any>
     | IAlternativeNode<T, any, any>
     | ISiblingNode<T, any>;

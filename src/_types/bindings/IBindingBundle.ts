@@ -6,7 +6,7 @@ export const bindingsBundle = Symbol("Hiery bindings");
 
 /** The data type that interface nodes can extract data from */
 export type IBindingBundle =
-    | ISubscribable<IBinding<any>>[]
+    | ISubscribable<IBinding<any>[]>
     | {
-          [bindingsBundle]: ISubscribable<IBinding<any>>[];
+          [bindingsBundle]: ISubscribable<IBinding<any>[]>;
       };

@@ -1,6 +1,9 @@
 import {IDataHook} from "model-react";
 import {IBinding} from "../../bindings/IBinding";
 import {IBindingData} from "../../bindings/IBindingData";
+import {IBindingInput} from "../../bindings/IBindingInput";
+import {IParentBindingData} from "../../bindings/IParentBindingData";
+import {INodeInfo} from "../../INodeInfo";
 import {IParentNode} from "../IParentNode";
 import {ITargetNode} from "../ITargetNode";
 
@@ -10,7 +13,7 @@ import {ITargetNode} from "../ITargetNode";
  * @param PI The input data of this parent's bindings
  * @param TI The input data of the nodes that this node provides alternatives to
  */
-export type IAlternativeNode<I, PI extends any, TI extends any> = {
+export type IAlternativeNode<I, PI, TI> = {
     /**
      * Initializes this node for the given bindings
      * @param bindings The bindings for this node
@@ -26,7 +29,7 @@ export type IAlternativeNode<I, PI extends any, TI extends any> = {
          * @param caught The list of bindings to provide alternatives for
          * @returns The bindings for the parent action
          */
-        get(caught: IBindingData<TI>[]): IBindingData<PI>;
+        get(caught: IBindingData<TI>[]): IParentBindingData<PI>;
 
         /**
          * Retrieves with what priority this node wants to provide a alternative for the given target bindings, bindings being absent or having priority 0 represents not wanting to provide alternatives for them
@@ -41,11 +44,14 @@ export type IAlternativeNode<I, PI extends any, TI extends any> = {
      * @param data The data to bind to the node
      * @returns The created binding
      */
-    bind(data: I): IBinding<I>;
+    bind(data: IBindingInput<I>): IBinding<I>;
 
     /** The target nodes that this node provides alternatives to */
     targets: ITargetNode<TI>[];
 
     /** The parents of this node, that this node creates bindings for */
     parents: IParentNode<PI>[];
+
+    /** Info about the node */
+    info: INodeInfo;
 };

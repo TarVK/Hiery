@@ -1,7 +1,10 @@
 import {IDataHook} from "model-react";
 import {IBinding} from "../../bindings/IBinding";
 import {IBindingBundle} from "../../bindings/IBindingBundle";
+import {IBindingInput} from "../../bindings/IBindingInput";
 import {IPluginContext} from "../../context/IPluginContext";
+import {INodeInfo} from "../../INodeInfo";
+import {ISubscribable} from "../../utils/ISubscribable";
 
 /**
  * A node to extract data from a given list of binding bundles
@@ -16,7 +19,7 @@ export type IInterfaceNode<I, O> = {
      * @param hook The data hook to subscribe to changes
      * @returns The output that was extracted from the bundles
      */
-    get(bindingBundles: IBindingBundle[], context?: IPluginContext, hook?: IDataHook): O;
+    (bindingBundles: ISubscribable<IBindingBundle[]>, context?: IPluginContext, hook?: IDataHook): O;
 
     /**
      * Extracts the output from the given bindingBundles
@@ -24,12 +27,15 @@ export type IInterfaceNode<I, O> = {
      * @param hook The data hook to subscribe to changes
      * @returns The output that was extracted from the bundles
      */
-    get(bindingBundles: IBindingBundle[], hook?: IDataHook): O;
+    (bindingBundles: ISubscribable<IBindingBundle[]>, hook?: IDataHook): O;
 
     /**
      * Creates a new binding for this node
      * @param data The data to bind to the node
      * @returns The created binding
      */
-    bind(data: I): IBinding<I>;
+    bind(data: IBindingInput<I>): IBinding<I>;
+
+    /** Info about the node */
+    info: INodeInfo;
 };
