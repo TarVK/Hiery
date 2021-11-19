@@ -13,5 +13,5 @@ export function createInterfaceNode<I, O>(
         combine: IDataTransformer<I, O>;
     } & INodeInfo
 ): IInterfaceNode<I, O> {
-    return null as any;
+    return null as any; // TODO:
 }

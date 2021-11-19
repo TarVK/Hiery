@@ -4,10 +4,10 @@ import {IInterfaceNode} from "./types/IInterfaceNode";
 import {ISiblingNode} from "./types/ISiblingNode";
 
 /**
- * A node that can be used as a target of the alternative node
+ * Any type of possible node
  * @param T The input type of this target node
  */
-export type ITargetNode<T> =
+export type IAnyNode<T> =
     | IInterfaceNode<T, any>
     | ITransformerNode<T, any>
     | IAlternativeNode<T, any, any>

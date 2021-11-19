@@ -3,7 +3,7 @@ import {IBindingData} from "../../bindings/IBindingData";
 import {IParentBindingData} from "../../bindings/IParentBindingData";
 import {INodeInfo} from "../../INodeInfo";
 import {IParentNode} from "../IParentNode";
-import {ITargetNode} from "../ITargetNode";
+import {IAnyNode} from "../IAnyNode";
 
 /**
  * A node that can serve as a sibling of an existing node, inheriting its data and combining it into binding for this node's parent(s)
@@ -23,7 +23,7 @@ export type ISiblingNode<I, PI> = {
     parents: IParentNode<PI>[];
 
     /** The node that this node is a sibling of */
-    sibling: ITargetNode<I>;
+    sibling: IAnyNode<I>;
 
     /** Info about the node */
     info: INodeInfo;

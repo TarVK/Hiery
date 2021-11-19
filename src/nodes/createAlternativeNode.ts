@@ -2,7 +2,7 @@ import {IBindingData} from "../_types/bindings/IBindingData";
 import {IParentBindingData} from "../_types/bindings/IParentBindingData";
 import {INodeInfo} from "../_types/INodeInfo";
 import {IParentNode} from "../_types/nodes/IParentNode";
-import {ITargetNode} from "../_types/nodes/ITargetNode";
+import {IAnyNode} from "../_types/nodes/IAnyNode";
 import {ITransformerNode} from "../_types/nodes/types/ITransformerNode";
 import {IDataTransformer} from "./_types/IDataTransformer";
 import {TDerived} from "./_types/TDerived";
@@ -17,7 +17,7 @@ export function createAlternativeNode<I, PI = never, TI = never>(
         /** The parents that this transformer creates bindings for */
         parents: IParentNode<PI>[];
         /** The targets which this node should provide alternatives for */
-        targets: ITargetNode<TI>[];
+        targets: IAnyNode<TI>[];
         /** Combines the input data to the parent's input data */
         init: IDataTransformer<
             I,
@@ -39,5 +39,5 @@ export function createAlternativeNode<I, PI = never, TI = never>(
         >;
     } & INodeInfo
 ): ITransformerNode<I, PI> {
-    return null as any;
+    return null as any; // TODO:
 }

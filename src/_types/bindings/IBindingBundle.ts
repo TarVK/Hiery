@@ -5,8 +5,8 @@ import {ISubscribable} from "../utils/ISubscribable";
 export const bindingsBundle = Symbol("Hiery bindings");
 
 /** The data type that interface nodes can extract data from */
-export type IBindingBundle =
-    | ISubscribable<IBinding<any>[]>
-    | {
-          [bindingsBundle]: ISubscribable<IBinding<any>[]>;
-      };
+export type IBindingBundle = ISubscribable<IBinding<any>[]> | IBindingBundleObject;
+
+export type IBindingBundleObject = {
+    [bindingsBundle]: ISubscribable<IBinding<any>[]>;
+};

@@ -1,4 +1,3 @@
-import {IDataRetriever} from "model-react";
 import {IBindingBundle} from "./IBindingBundle";
 
 /** All data associated to a binding */

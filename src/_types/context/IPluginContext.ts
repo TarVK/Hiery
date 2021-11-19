@@ -1,5 +1,5 @@
 import {IDataHook} from "model-react";
-import {ITargetNode} from "../nodes/ITargetNode";
+import {IAnyNode} from "../nodes/IAnyNode";
 import {ISiblingNode} from "../nodes/types/ISiblingNode";
 
 /** The symbol to store the hiery plugin context under in an object */
@@ -16,5 +16,5 @@ export type IRawPluginContext = {
      * @param hook The data hook to subscribe to changes
      * @returns All registered siblings of the node
      */
-    get<T>(node: ITargetNode<T>, hook?: IDataHook): ISiblingNode<any, T>[];
+    get<T>(node: IAnyNode<T>, hook?: IDataHook): ISiblingNode<any, T>[];
 };
